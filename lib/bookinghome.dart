@@ -5,10 +5,12 @@ import 'package:hotelbookingapp/kochirooms.dart';
 class bookhomepg extends StatefulWidget {
   bookhomepg({super.key});
   List<Image> image = [
-    Image.asset("asset/bookhotel1.png", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel1.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel2.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel3.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel4.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel5.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel6.jpg", fit: BoxFit.fill),
   ];
   List<Image> image2 = [
     Image.asset("asset/lv1.png", fit: BoxFit.fill),
@@ -146,7 +148,8 @@ class _bookhomepgState extends State<bookhomepg> {
               SizedBox(
                 height: 350,
                 child: ListView.builder(
-                  itemCount: users.length,
+                  itemCount: users.length > 6 ? 6 : users.length,
+                  //users.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     var user = users[index];
@@ -163,10 +166,11 @@ class _bookhomepgState extends State<bookhomepg> {
                                 children: [
                                   Container(
                                     height: 200,
-                                    child: Image.network(
-                                      user["himage"],
-                                      fit: BoxFit.fill,
-                                    ),
+                                    child: widget.image[index],
+                                    //Image.network(
+                                    //user["himage"],
+                                    //fit: BoxFit.fill,
+                                    //),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),

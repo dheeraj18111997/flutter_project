@@ -73,7 +73,7 @@ class _mybookState extends State<mybook> {
                               child:
                                   selectedHotel != null &&
                                           selectedHotel!['himage'] != null
-                                      ? Image.network(
+                                      ? Image.asset(
                                         selectedHotel!['himage'],
                                         fit: BoxFit.fill,
                                       )

@@ -40,28 +40,33 @@ class _checkoutState extends State<checkout> {
       //     },
       //   ),
       // ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildSimpleInfoBox(),
-                  _buildCalendarSection(
-                    'September 2025',
-                    DateTime(2025, 9, 15),
-                  ),
-                  _buildCalendarSection('October 2025', DateTime(2025, 10, 15)),
-                  _buildCalendarSection(
-                    'November 2025',
-                    DateTime(2025, 11, 15),
-                  ),
-                ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _buildSimpleInfoBox(),
+                    _buildCalendarSection(
+                      'September 2025',
+                      DateTime(2025, 9, 15),
+                    ),
+                    _buildCalendarSection(
+                      'October 2025',
+                      DateTime(2025, 10, 15),
+                    ),
+                    _buildCalendarSection(
+                      'November 2025',
+                      DateTime(2025, 11, 15),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          _buildApplyButton(), // Fixed Apply button
-        ],
+            _buildApplyButton(), // Fixed Apply button
+          ],
+        ),
       ),
     );
   }

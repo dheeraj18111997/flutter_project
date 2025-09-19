@@ -33,21 +33,23 @@ class _RoomGuestScreenState extends State<RoomGuestScreen> {
       //     },
       //   ),
       // ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildInfoBox(), // Check-in, Check-out, Room & Guest Section
-                  _buildRoomGuestSelection(), // Room & Guest Counter Section
-                  _buildAddRoomButton(), // Add Room Button
-                ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _buildInfoBox(), // Check-in, Check-out, Room & Guest Section
+                    _buildRoomGuestSelection(), // Room & Guest Counter Section
+                    _buildAddRoomButton(), // Add Room Button
+                  ],
+                ),
               ),
             ),
-          ),
-          _buildApplyButton(), // Apply Button (Stays fixed at the bottom)
-        ],
+            _buildApplyButton(), // Apply Button (Stays fixed at the bottom)
+          ],
+        ),
       ),
     );
   }

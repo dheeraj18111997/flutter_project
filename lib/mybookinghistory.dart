@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class bookhistory extends StatefulWidget {
   bookhistory({super.key});
   List<Image> image = [
-    Image.asset("asset/bookhotel1.png", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel1.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel2.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel3.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel4.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel5.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel6.jpg", fit: BoxFit.fill),
   ];
 
   @override
@@ -41,7 +43,8 @@ class _bookhistoryState extends State<bookhistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: users.length,
+        itemCount: users.length > 6 ? 6 : users.length,
+        //users.length,
         itemBuilder: (context, index) {
           var user = users[index];
           return Padding(
@@ -65,10 +68,11 @@ class _bookhistoryState extends State<bookhistory> {
                             borderRadius: BorderRadius.circular(10),
                             child: Container(
                               height: 150,
-                              child: Image.network(
-                                user["himage"],
-                                fit: BoxFit.fill,
-                              ),
+                              child: widget.image[index],
+                              // Image.network(
+                              //user["himage"],
+                              // fit: BoxFit.fill,
+                              //),
                               // Image.asset(
                               //   "asset/bookhotel4.jpg",
                               //   fit: BoxFit.fill,

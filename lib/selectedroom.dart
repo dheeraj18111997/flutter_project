@@ -52,228 +52,239 @@ class _selroomState extends State<selroom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20),
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Kochi",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: Icon(Icons.close),
-              ),
-            ),
-            SizedBox(height: 20),
-            SizedBox(
-              height: 60,
-              child: ElevatedButton(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              IconButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: ((context) => datetabbar())),
-                  );
+                  Navigator.pop(context);
                 },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.black),
-                ),
-                child: IntrinsicHeight(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            formattedCheckin,
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          ),
-                          Text(
-                            "Check in",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      VerticalDivider(width: 1, color: Colors.white),
-                      Column(
-                        children: [
-                          Text(
-                            formattedCheckout,
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          ),
-                          Text(
-                            "Check out",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      VerticalDivider(width: 1, color: Colors.white),
-                      Column(
-                        children: [
-                          Text(
-                            "1 Room",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          ),
-                          Text(
-                            "1 Guest",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
+                icon: Icon(Icons.arrow_back),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Kochi",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
                   ),
+                  prefixIcon: Icon(Icons.search),
+                  suffixIcon: Icon(Icons.close),
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: 40,
-                  width: 150,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [Text("Sort by"), Icon(Icons.sort)],
+              SizedBox(height: 20),
+              SizedBox(
+                height: 60,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: ((context) => datetabbar())),
+                    );
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(Colors.black),
                   ),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                Container(
-                  height: 40,
-                  width: 150,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [Text("Filter"), Icon(Icons.filter_list)],
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 70),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        ((context) => BookedHotel(
-                          recCheckin: formattedCheckin,
-                          recCheckout: formattedCheckout,
-                        )),
-                  ),
-                );
-              },
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      width: double.infinity,
-                      height: 200,
-                      child:
-                          selectedHotel != null &&
-                                  selectedHotel!['himage'] != null
-                              ? Image.network(
-                                selectedHotel!['himage'],
-                                fit: BoxFit.fill,
-                              )
-                              : Container(
-                                color: Colors.grey,
-                                child: Center(
-                                  child: Text('No image available'),
-                                ),
-                              ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: IntrinsicHeight(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          height: 20,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "70%OFF",
-                              style: TextStyle(fontSize: 12),
+                        Column(
+                          children: [
+                            Text(
+                              formattedCheckin,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
+                            Text(
+                              "Check in",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        CircleAvatar(
-                          radius: 15,
-                          child: Icon(
-                            Icons.favorite_border,
-                            color: Colors.black,
-                          ),
+                        VerticalDivider(width: 1, color: Colors.white),
+                        Column(
+                          children: [
+                            Text(
+                              formattedCheckout,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "Check out",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        VerticalDivider(width: 1, color: Colors.white),
+                        Column(
+                          children: [
+                            Text(
+                              "1 Room",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "1 Guest",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 40,
+                    width: 150,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [Text("Sort by"), Icon(Icons.sort)],
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  Container(
+                    height: 40,
+                    width: 150,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [Text("Filter"), Icon(Icons.filter_list)],
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
+              SizedBox(height: 70),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          ((context) => BookedHotel(
+                            recCheckin: formattedCheckin,
+                            recCheckout: formattedCheckout,
+                          )),
+                    ),
+                  );
+                },
+                child: Stack(
                   children: [
-                    Icon(Icons.star, size: 12),
-                    Text("  4.5", style: TextStyle(fontSize: 12)),
-                    Text(
-                      "    (999)",
-                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        width: double.infinity,
+                        height: 200,
+                        child:
+                            selectedHotel != null &&
+                                    selectedHotel!['himage'] != null
+                                ? Image.asset(
+                                  selectedHotel!['himage'],
+                                  fit: BoxFit.fill,
+                                )
+                                : Container(
+                                  color: Colors.grey,
+                                  child: Center(
+                                    child: Text('No image available'),
+                                  ),
+                                ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 20,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "70%OFF",
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                          ),
+                          CircleAvatar(
+                            radius: 15,
+                            child: Icon(
+                              Icons.favorite_border,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Icon(Icons.location_on, size: 12, color: Colors.orange),
-                    Text(
-                      selectedHotel!['hloc'],
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: 5),
-            Text(selectedHotel!['hdesc'], style: TextStyle(fontSize: 14)),
-            SizedBox(height: 5),
-            Row(
-              children: [
-                Text(
-                  "₹${selectedHotel!['hprice']}",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  " ₹24,99",
-                  style: TextStyle(fontSize: 14, color: Colors.grey),
-                ),
-              ],
-            ),
-          ],
+              ),
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.star, size: 12),
+                      Text("  4.5", style: TextStyle(fontSize: 12)),
+                      Text(
+                        "    (999)",
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on, size: 12, color: Colors.orange),
+                      Text(
+                        selectedHotel!['hloc'],
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 5),
+              Text(selectedHotel!['hdesc'], style: TextStyle(fontSize: 14)),
+              SizedBox(height: 5),
+              Row(
+                children: [
+                  Text(
+                    "₹${selectedHotel!['hprice']}",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    " ₹24,99",
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

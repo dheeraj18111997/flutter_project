@@ -6,10 +6,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class roompg extends StatefulWidget {
   roompg({super.key});
   List<Image> image = [
-    Image.asset("asset/bookhotel1.png", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel1.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel2.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel3.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel4.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel5.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel6.jpg", fit: BoxFit.fill),
   ];
 
   @override
@@ -140,7 +142,8 @@ class _roompgState extends State<roompg> {
               Container(
                 height: 500,
                 child: ListView.builder(
-                  itemCount: users.length,
+                  itemCount: users.length > 6 ? 6 : users.length,
+                  //users.length,
                   scrollDirection: Axis.vertical,
 
                   itemBuilder: (context, index) {
@@ -152,7 +155,8 @@ class _roompgState extends State<roompg> {
                             onTap: () {
                               // Save the selected hotel data without navigating
                               saveSelectedHotel({
-                                'himage': user['himage'],
+                                'himage': "asset/bookhotel${index + 1}.jpg",
+                                // user['himage'],
                                 'hloc': user['hloc'],
                                 'hdesc': user['hdesc'],
                                 'hprice': user['hprice'],
@@ -172,10 +176,11 @@ class _roompgState extends State<roompg> {
                                   child: Container(
                                     width: double.infinity,
                                     height: 200,
-                                    child: Image.network(
-                                      user["himage"],
-                                      fit: BoxFit.fill,
-                                    ),
+                                    child: widget.image[index],
+                                    // Image.network(
+                                    // user["himage"],
+                                    // fit: BoxFit.fill,
+                                    // ),
                                   ),
                                 ),
                                 Padding(

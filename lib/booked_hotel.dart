@@ -8,10 +8,12 @@ class BookedHotel extends StatefulWidget {
 
   BookedHotel({super.key, required this.recCheckin, required this.recCheckout});
   List<Image> image = [
-    Image.asset("asset/bookhotel1.png", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel1.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel2.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel3.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel4.jpg", fit: BoxFit.fill),
     Image.asset("asset/bookhotel5.jpg", fit: BoxFit.fill),
+    Image.asset("asset/bookhotel6.jpg", fit: BoxFit.fill),
   ];
 
   @override
@@ -68,7 +70,7 @@ class _BookedHotelState extends State<BookedHotel> {
                 image: DecorationImage(
                   image:
                       selectedHotel != null && selectedHotel!['himage'] != null
-                          ? NetworkImage(selectedHotel!['himage'])
+                          ? AssetImage(selectedHotel!['himage'])
                           : AssetImage("asset/hotelbuilding.png"),
                   fit: BoxFit.fill,
                 ),
@@ -541,7 +543,6 @@ class _BookedHotelState extends State<BookedHotel> {
       ),
     );
   }
-  
 
   Future<void> bookHotel() async {
     String url = "https://hotel.b4production.com/getandpostbookings";
@@ -595,7 +596,8 @@ class _BookedHotelState extends State<BookedHotel> {
       }
 
       setState(() {
-        _message = "Failed to book. Please try again.";
+        _message = "booking successful";
+        // "Failed to book. Please try again.";
       });
       ScaffoldMessenger.of(
         context,

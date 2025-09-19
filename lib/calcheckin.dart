@@ -27,60 +27,65 @@ class _checkinState extends State<checkin> {
       //     },
       //   ),
       // ),
-      body: Column(
-        children: [
-          // Calendars inside Expanded to allow scrolling
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildCalendarSection(
-                    'September 2025',
-                    DateTime(2025, 9, 15),
-                  ),
-                  _buildCalendarSection('October 2025', DateTime(2025, 10, 15)),
-                  _buildCalendarSection(
-                    'November 2025',
-                    DateTime(2025, 11, 15),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          // Apply button at the bottom
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  widget.onDateSelected(_selectedDay);
-                  widget.tabController.animateTo(1);
-                },
-                // () {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) =>
-                //             checkout(selectedDate: _selectedDay)),
-                //   );
-                // },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[300], // Disabled look
-                  foregroundColor: Colors.white, // White text color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Calendars inside Expanded to allow scrolling
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _buildCalendarSection(
+                      'September 2025',
+                      DateTime(2025, 9, 15),
+                    ),
+                    _buildCalendarSection(
+                      'October 2025',
+                      DateTime(2025, 10, 15),
+                    ),
+                    _buildCalendarSection(
+                      'November 2025',
+                      DateTime(2025, 11, 15),
+                    ),
+                  ],
                 ),
-                child: Text(
-                  'Apply',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ), // White text
               ),
             ),
-          ),
-        ],
+            // Apply button at the bottom
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    widget.onDateSelected(_selectedDay);
+                    widget.tabController.animateTo(1);
+                  },
+                  // () {
+                  //   Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             checkout(selectedDate: _selectedDay)),
+                  //   );
+                  // },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[300], // Disabled look
+                    foregroundColor: Colors.white, // White text color
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  child: Text(
+                    'Apply',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ), // White text
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
